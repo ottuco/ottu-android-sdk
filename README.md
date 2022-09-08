@@ -126,4 +126,4 @@ BroadcastReceiver paymentReceiver = new BroadcastReceiver() {
 	
 ## Licenses
 
-- [OttuCheckout License](LICENSE)
+- [OttuCheckout License](https://github.com/ottuco/ottu-android-sdk/blob/main/LICENCE)
