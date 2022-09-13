@@ -121,7 +121,7 @@ BroadcastReceiver paymentReceiver = new BroadcastReceiver() {
 
  You may need to include the following lines in your progard-rules.pro file if enable progard or minifyEnble.
 ```java
--keep class ottu.payment** { *; }
+-keep class Ottu** { *; }
 ```
 	
 ## Licenses
