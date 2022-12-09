@@ -109,7 +109,6 @@ PAYMENT_SUCCESS = "paymentSuccess" // add in your constant accordingly
                 } else if (Status.equals("cancel")){
                    	// handle cancle result
                 }
-              }
             }
         }
     }
