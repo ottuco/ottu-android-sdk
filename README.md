@@ -99,9 +99,16 @@ PAYMENT_SUCCESS = "paymentSuccess" // add in your constant accordingly
             if (requestCode == OttuPaymentResult ){
                 SocketRespo paymentResult = (SocketRespo) data.getSerializableExtra("paymentResult");
                 textView.setText(paymentResult.status);   // success || failed || cancel
-              if(paymentResult.status.equals("success")){
-	      Intent  intent = Intent(PAYMENT_SUCCESS)
-               sendBroadcast(intent)
+		String Status = paymentResult.getStatus();
+                if (Status.equals("success")){
+                    	// handle success result
+ 			Intent  intent = Intent(PAYMENT_SUCCESS)
+               		sendBroadcast(intent)
+                }else if (Status.equals("failed")){
+                    	// handle failed result
+                } else if (Status.equals("cancel")){
+                   	// handle cancle result
+                }
               }
             }
         }
