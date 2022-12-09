@@ -70,10 +70,18 @@ Get payment result in onActivityResult menthod in Activity.
         if (resultCode == RESULT_OK ){
             if (requestCode == OttuPaymentResult ){
                 SocketRespo paymentResult = (SocketRespo) data.getSerializableExtra("paymentResult");
-                textView.setText(paymentResult.status);   // success || failed || cancel
-	        textView.setText(paymentResult.message);
-	        textView.setText(paymentResult.order_no);
-	        textView.setText(paymentResult.operation);
+		String Status = paymentResult.getStatus();
+                if (Status.equals("success")){
+                    	// handle success result
+                	textView.setText(paymentResult.status);   
+	        	textView.setText(paymentResult.message);
+	        	textView.setText(paymentResult.order_no);
+	        	textView.setText(paymentResult.operation);
+                }else if (Status.equals("failed")){
+                    	// handle failed result
+                } else if (Status.equals("cancel")){
+			// handle cancel result
+		}
             }
 
         }
