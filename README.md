@@ -54,7 +54,7 @@ Below is the sample code of how you can use Ottu Payment SDK.
   Ottu ottuPaymentSdk = new Ottu(MainActivity.this);
                         ottuPaymentSdk.setApiId("apiKey"); // set Api Key which is get from Ottu merchant account
                         ottuPaymentSdk.setMerchantId("merchant_id");
-                        ottuPaymentSdk.setSessionId("Session_id"); // Retrive from public API
+                        ottuPaymentSdk.setSessionId("session_id"); // Retrive from public API
                         ottuPaymentSdk.setAmount("100.00"); // String Value
                         ottuPaymentSdk.setLocal("lang"); // en or ar
                         ottuPaymentSdk.build();
