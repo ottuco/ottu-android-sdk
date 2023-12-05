@@ -43,7 +43,7 @@ allprojects {
 }
     
 dependencies {
-       implementation 'com.github.ottuco:ottu-android-private-sdk:1.0.19'
+       implementation 'com.github.ottuco:ottu-android-private-sdk:1.0.28'
 }
 ```
 
@@ -129,6 +129,51 @@ BroadcastReceiver paymentReceiver = new BroadcastReceiver() {
             }
 };
 ```
+
+ ## STC Pay integration
+
+ Set Stc Pay button in xml
+ ```java
+  <Ottu.util.StcPayButton
+   android:id="@+id/stcBtn"
+   android:layout_gravity="right"
+   android:layout_width="100dp"
+   android:layout_height="40dp"/>
+
+```
+Set creadential and transaction detail for make payment before user click on stc pay button
+```java
+  stcPayButton.setApiId("API_key");
+        stcPayButton.setMerchantId("Mercent_id");
+        stcPayButton.setLocal("en");  // Language
+        stcPayButton.setCreateTransaction("e_commerce"
+                , String.valueOf(amount) // Amount
+                ,"KWD"                   // Currency code
+                ,"https://postapp.knpay.net/disclose_ok/" //  Discloser url
+                ,"https://postapp.knpay.net/redirected/"  //  Redirect url
+                ,"customer_id"
+                ,"1234567890"   // Mobile number
+                ,"2:00");       // Transaction Time Limite
+
+//   Get payment result in onActivityResult menthod in Activity
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK ){
+            if (requestCode == OttuPaymentResult ){
+                SocketRespo paymentResult = (SocketRespo) data.getSerializableExtra("paymentResult");
+                textView.setText(paymentResult.status);   // success || failed || cancel
+	        textView.setText(paymentResult.message);
+	        textView.setText(paymentResult.order_no);
+	        textView.setText(paymentResult.operation);
+            }
+
+        }
+    }
+
+
+```
+
 ## ProGuard
 
  You may need to include the following lines in your progard-rules.pro file if enable progard or minifyEnble.
